@@ -1,0 +1,12 @@
+import sys
+
+X = int(sys.stdin.readline())
+N = int(sys.stdin.readline())
+arr = [0]* N
+
+for x in xrange(N):
+    arr[x] = int(sys.stdin.readline())
+
+print X
+print N
+print arr
