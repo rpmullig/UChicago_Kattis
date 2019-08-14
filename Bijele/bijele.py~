@@ -1,0 +1,12 @@
+import sys
+
+N = str(sys.stdin.readline()).replace('\n', '').split(' ')
+
+pieces = ['King', 'Queen', 'Rook', 'Bishop', 'Knight', 'Pawns']
+compare = [1, 1, 2, 2, 2, 8]
+ans = ""
+
+for i in range(0, len(N)):
+	ans = str(compare[i] - int(N[i])) + (ans + ' ')
+
+print ans
