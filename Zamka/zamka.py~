@@ -1,0 +1,29 @@
+import sys
+
+L = int(sys.stdin.readline())
+D = int(sys.stdin.readline())
+X = int(sys.stdin.readline())
+
+
+def integer_sum(num):
+    temp_str = str(num)
+    value = 0
+    
+    for x in range(0, len(temp_str)):
+        value = value + int(temp_str[x])
+
+    return value
+        
+def calc_min(L, D, X):
+   for i in range(L, D):
+       if integer_sum(i) is X:
+           return i
+
+def calc_max(L, D, X):
+    for i in reversed(range(L, D)):
+        if integer_sum(i) is X:
+            return i
+
+
+print calc_min(L, D, X)
+print calc_max(L, D, X)
