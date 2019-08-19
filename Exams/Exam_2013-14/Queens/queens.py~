@@ -1,0 +1,30 @@
+import sys
+
+N = int(sys.stdin.readline())
+queens = []
+
+for i in xrange(N):
+    temp = str(sys.stdin.readline()).split(' ')
+    temp_arr = [ int(temp[0]), int(temp[1])]
+    queens.append(temp_arr)
+    del temp
+    del temp_arr
+
+matrix = []
+
+for row in xrange(N):
+    matrix.append([0] * N)
+    
+
+def pretty_print(mat):
+    for row in xrange(len(mat)):
+        print mat[row]
+
+for elm in queens:
+    x = elm[0]
+    y = elm[1] 
+    matrix[x][y] = 1
+
+
+pretty_print(matrix)
+

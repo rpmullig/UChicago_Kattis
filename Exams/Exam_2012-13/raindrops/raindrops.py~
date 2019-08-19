@@ -1,0 +1,27 @@
+import sys
+
+n = int(sys.stdin.readline())
+num = str(sys.stdin.readline()).split(' ')
+
+for x in range(n):
+    num[x] = int(num[x])
+
+#print n
+#print num 
+
+def raindrop(arr, x):
+
+    sum = 0
+    for i in range(x):
+        if arr[i] > 0:
+            sum += arr[i]
+        else:
+            x -= 1
+
+    if x <= 0:
+        return "INSUFFICIENT DATA"
+    else:
+        return sum / x 
+
+
+print raindrop(num, n)
