@@ -4,55 +4,41 @@ import sys
 num1 = str(sys.stdin.readline())
 num2 = str(sys.stdin.readline())
 
-# put digits in a arrays as string characters
-num1_arr, num2_arr = [char for char in num1], [char for char in num2]
+num1 = num1[:len(num1)-1]
+num2 = num2[:len(num2)-1]
 
-# remove the '\n' for next line
-num1_arr.pop()
-num2_arr.pop()
+#print num1
+#print num2
 
-# make the arrays equal length for comparison by adding 0's in front
-if len(num1) > len(num2):
-    tmp = [ '0' * (len(num1)-len(num2))]
-    num2_arr = tmp + num2_arr
-elif len(num2) > len(num1):
-    tmp =  [ '0' * (len(num2)-len(num1))]
-    num1_arr = tmp + num1_arr
+while len(num1) < len(num2):
+	num1 = '0' + num1
+while len(num2) < len(num1):
+	num2 = '0' + num2
 
-#print num1_arr
-#print num2_arr
-# create a compare function to be used for logic in subsequent while loop
-def compare(digit1, digit2, i):
-    digit1 = int(digit1)
-    digit2 = int(digit2)
-    if digit1 == digit2:
-        return
-    elif digit1 > digit2:
-        num2_arr[i] = None
-        return
-    elif digit2 > digit1:
-        num1_arr[i] = None
-        return
+#print num1
+#print num2
 
-# now combine and print
-num1 = ""
-num2 = ""
-
-for x in xrange(min(len(num1_arr), len(num2_arr))):
-   compare(num1_arr[x], num2_arr[x], x)
-   if num1_arr[x] is not None:
-       num1 += num1_arr[x]
-
-   if num2_arr[x] is not None:
-       num2 += num2_arr[x]
+ans_num1, ans_num2 = "", ""
 
 
-if num1 is '':
+i = 0
+while i < len(num2):
+	if int(num1[i]) > int(num2[i]):
+		ans_num1 += num1[i]
+	elif int(num1[i]) < int(num2[i]):
+		ans_num2 += num2[i]
+	else:
+		ans_num1 += num1[i]
+		ans_num2 += num2[i]
+	i += 1
+
+
+if ans_num1 is "":
+	print "YODA"
+else:
+	print int(ans_num1)
+
+if ans_num2 is "":
     print "YODA"
 else:
-    print int(num1)
-
-if num2 is '':
-    print "YODA"
-else:
-    print int(num2)
+    print int(ans_num2)
