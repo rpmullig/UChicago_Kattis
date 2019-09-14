@@ -1,0 +1,17 @@
+import sys
+
+name = str(sys.stdin.readline()).replace('\n', '').split(' ')
+
+
+if len(name[1]) == 5:
+    ans = name[1] * 4
+else:
+    count = round(len(name[0]) / len(name[1]))
+    remainder = len(name[0]) % len(name[1])
+    ans = name[1] * int(count)
+    ans = ans + name[1][0:remainder]
+
+
+ans = name[0] + ' ' + ans
+
+print ans
