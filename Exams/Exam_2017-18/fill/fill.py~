@@ -1,0 +1,45 @@
+import sys
+
+tmp = str(sys.stdin.readline()).replace("\n", '').split(' ')
+
+N = int(tmp[0])
+i = int(tmp[1])
+x = int(tmp[2])
+
+tmp = str(sys.stdin.readline()).replace("\n", '').split(' ')
+
+arr = []
+for elm in tmp:
+	arr.append(int(elm))
+
+del tmp 
+
+def fill_r(N, i, x, v):
+        if i < 0 or i >= N:
+                return
+        elif arr[i] != v:
+                return
+        elif arr[i] == x:
+                return
+        else:
+                #print arr
+                arr[i] = x
+                fill_r(N, i+1, x, v)
+                fill_r(N, i-1, x, v)
+
+def fill(N, i, x):
+        if i < 0 or i >= N:
+                return
+        else:
+                v = arr[i]
+                arr[i] = x
+                fill_r(N, i+1, x, v)
+                fill_r(N, i-1, x, v)
+
+    
+fill(N, i, x)
+ans = ""
+for elm in arr:
+        ans = ans + elm + " "
+
+print ans
