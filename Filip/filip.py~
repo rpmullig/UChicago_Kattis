@@ -1,0 +1,23 @@
+import sys
+
+[A, B] = str(sys.stdin.readline()).strip().split(' ')
+
+tmpA = ""
+tmpB = ""
+
+for char in A:
+    tmpA += char
+
+for char in B:
+    tmpB += char
+
+A = int(tmpA)
+B = int(tmpB)
+
+
+
+if A > B:
+    print A
+else:
+    print B
+
